@@ -12,7 +12,7 @@
 # Trials
 ## Run with pool = `prefork`
 
-*expectation* : No errors, everything runs fine.
+*expectation* : No errors, everything runs fine. (ok there might be some database locked errors, but that's not what we're looking for)
 
 1. run `python2 manage.py fill` to prefill the queue with tasks
 2. run `celery worker -A demo -c 40 --pool prefork -l INFO` to run tasks
