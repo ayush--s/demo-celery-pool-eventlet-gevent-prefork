@@ -15,7 +15,7 @@
 *expectation* : No errors, everything runs fine. (ok there might be some database locked errors, but that's not what we're looking for)
 
 1. run `python2 manage.py fill` to prefill the queue with tasks
-2. run `celery worker -A demo -c 40 --pool prefork -l INFO` to run tasks
+2. run `celery worker -A demo -c 8 --pool prefork -l INFO` to run tasks
 
 
 ## Run with pool = `gevent`
@@ -23,7 +23,7 @@
 *expectation* : few "IntegrityError: NOT NULL constraint failed: core_store.val", proving that shared state was mutated while the other thread was running concurrently.
 
 1. run `python2 manage.py fill` to prefill the queue with tasks
-2. run `celery worker -A demo -c 40 --pool gevent -l INFO` to run tasks
+2. run `celery worker -A demo -c 8 --pool gevent -l INFO` to run tasks
 
 
 ## Run with pool = `eventlet`
@@ -31,7 +31,7 @@
 *expectation* : few "IntegrityError: NOT NULL constraint failed: core_store.val", proving that shared state was mutated while the other thread was running concurrently.
 
 1. run `python2 manage.py fill` to prefill the queue with tasks
-2. run `celery worker -A demo -c 40 --pool eventlet -l INFO` to run tasks
+2. run `celery worker -A demo -c 8 --pool eventlet -l INFO` to run tasks
 
 
 # conclusion
